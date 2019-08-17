@@ -55,13 +55,13 @@
           <div v-for="stub in stubs">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" v-bind:data-target="stub.name | addSharp" aria-expanded="false" v-bind:aria-controls="stub.name">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="stub.name | addSharp" aria-expanded="false" :aria-controls="stub.name">
                     {{ stub.entryPoint }}
                   </button>
                 </h2>
             </div>
 
-            <div v-bind:id="stub.name" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div :id="stub.name" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
                 <table class="table table-hover">
                   <thead class="thead-dark">
@@ -93,9 +93,12 @@
                     </tr>
                     <tr>
                       <th scope="row">sample</th>
-                      <td><a v-bind:href="stub.entryPoint | addHost">{{ stub.entryPoint | addHost }}</a></td>
+                      <td><a :href="stub.entryPoint | addHost">{{ stub.entryPoint | addHost }}</a></td>
                     </tr>
-
+                    <!-- <tr>
+                      <th scope="row">sample2</th>
+                      <td><a :href="addHost2(stub.entryPoint)">{{ addHost2(stub.entryPoint) }}</a></td>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -135,12 +138,20 @@
             console.log(json);
           })
         },
+        methods: {
+          addSharp2 (value) {
+            return '#' + value;
+          },
+          addHost2 (value) {
+            return 'http://dev-env.yjpcmmxz6m.ap-northeast-1.elasticbeanstalk.com' + value;
+          },
+        },
         filters: {
           addSharp (value) {
-              return '#' + value;
+            return '#' + value;
           },
           addHost (value) {
-              return 'http://dev-env.yjpcmmxz6m.ap-northeast-1.elasticbeanstalk.com' + value;
+            return 'http://dev-env.yjpcmmxz6m.ap-northeast-1.elasticbeanstalk.com' + value;
           },
         },
       })
