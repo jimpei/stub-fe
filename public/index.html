@@ -12,6 +12,7 @@
   </head>
   <body>
     <div id="app">
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">STUB TOOL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,83 +47,87 @@
           </form>
         </div>
       </nav>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-      </div>
 
-      <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div v-for="stub in stubs">
-            <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="stub.name | addSharp" aria-expanded="false" :aria-controls="stub.name">
-                    {{ stub.entryPoint }}
-                  </button>
-                </h2>
-            </div>
+      <div class="container">
 
-            <div :id="stub.name" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                <table class="table table-hover">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">name</th>
-                      <th scope="col">data</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table-primary">
-                      <th scope="row">entry point</th>
-                      <td>{{ stub.entryPoint }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">status code</th>
-                      <td>{{ stub.httpStatusCode }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">content-type</th>
-                      <td>{{ stub.contentType }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">delay time(s)</th>
-                      <td>{{ stub.sleep }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">response</th>
-                      <td>{{ stub.response }}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">sample</th>
-                      <td><a :href="stub.entryPoint | addHost">{{ stub.entryPoint | addHost }}</a></td>
-                    </tr>
-                    <!-- <tr>
-                      <th scope="row">sample2</th>
-                      <td><a :href="addHost2(stub.entryPoint)">{{ addHost2(stub.entryPoint) }}</a></td>
-                    </tr> -->
-                  </tbody>
-                </table>
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>
+
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div v-for="stub in stubs">
+              <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" :data-target="stub.name | addSharp" aria-expanded="false" :aria-controls="stub.name">
+                      {{ stub.entryPoint }}
+                    </button>
+                  </h2>
+              </div>
+
+              <div :id="stub.name" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <table class="table table-hover">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">data</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="table-primary">
+                        <th scope="row">entry point</th>
+                        <td>{{ stub.entryPoint }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">status code</th>
+                        <td>{{ stub.httpStatusCode }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">content-type</th>
+                        <td>{{ stub.contentType }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">delay time(s)</th>
+                        <td>{{ stub.sleep }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">response</th>
+                        <td>{{ stub.response }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">sample</th>
+                        <td><a :href="stub.entryPoint | addHost">{{ stub.entryPoint | addHost }}</a></td>
+                      </tr>
+                      <!-- <tr>
+                        <th scope="row">sample2</th>
+                        <td><a :href="addHost2(stub.entryPoint)">{{ addHost2(stub.entryPoint) }}</a></td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- <p>{{ stubs }}</p> -->
-      <div>
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+        <div>
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
-        <div class="spinner-border text-secondary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
 
+      </div>
     </div>
     <script>
       var app = new Vue({
